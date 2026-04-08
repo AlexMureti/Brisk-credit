@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { 
-  Menu, X, Phone, MapPin, Clock, ChevronRight, CheckCircle2, 
+  Phone, MapPin, Clock, ChevronRight, CheckCircle2, 
   Store, Truck, Wheat, FileText, ClipboardCheck, Wallet, 
   Building2, Handshake, Landmark, BadgeCheck, ArrowRight,
   ChevronDown, ExternalLink
@@ -54,7 +54,6 @@ gsap.registerPlugin(ScrollTrigger);
  */
 function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -76,7 +75,6 @@ function Navigation() {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
-    setIsMobileMenuOpen(false);
   };
 
   return (
@@ -86,15 +84,13 @@ function Navigation() {
       }`}>
         <div className="w-full px-6 lg:px-12">
           <div className="flex items-center justify-between h-20">
-            {/* Logo */}
-            <a href="#" className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-brand to-orange-dark flex items-center justify-center">
-                <span className="text-white font-black text-lg">B</span>
-              </div>
-              <div className="hidden sm:block">
-                <span className="font-display font-bold text-white text-lg tracking-tight">BRISK CREDIT</span>
-                <span className="block text-[10px] text-white/60 uppercase tracking-wider">Your friendly financial partner</span>
-              </div>
+            {/* Logo - Standalone */}
+            <a href="#" className="flex items-center">
+              <img 
+                src="/company colors/briskLogo-dark.png" 
+                alt="Brisk Credit Logo"
+                className="h-12 w-auto object-contain hover:scale-105 transition-transform"
+              />
             </a>
 
             {/* Desktop Navigation */}
@@ -120,36 +116,58 @@ function Navigation() {
               </button>
             </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-white"
-            >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            {/* Mobile Menu Button - Hidden */}
+            {/* Floating bottom nav handles mobile navigation */}
+          
           </div>
         </div>
       </nav>
 
-      {/* Mobile Menu */}
-      <div className={`fixed inset-0 z-40 bg-navy-deep transition-transform duration-500 lg:hidden ${
-        isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
-      }`}>
-        <div className="flex flex-col items-center justify-center h-full gap-8">
-          {navLinks.map((link) => (
-            <button
-              key={link.href}
-              onClick={() => scrollToSection(link.href)}
-              className="text-2xl font-display font-bold text-white hover:text-orange-brand transition-colors"
-            >
-              {link.label}
-            </button>
-          ))}
-          <button 
-            onClick={() => scrollToSection('#contact')}
-            className="btn-primary mt-4"
+      {/* Floating Bottom Navigation - Mobile Only */}
+      <div className="fixed bottom-0 left-0 right-0 z-40 lg:hidden">
+        <div className="flex items-center justify-around h-24 px-4 bg-gradient-to-t from-navy-deep/98 via-navy/90 to-transparent backdrop-blur-xl border-t border-white/10">
+          {/* Products Icon */}
+          <button
+            onClick={() => scrollToSection('#products')}
+            className="flex flex-col items-center justify-center gap-1 py-2 px-3 rounded-xl transition-all duration-300 hover:bg-white/10 group"
           >
-            Apply Now
+            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-orange-brand/20 to-orange-brand/10 flex items-center justify-center group-hover:from-orange-brand/40 group-hover:to-orange-brand/20 transition-all">
+              <Store size={22} className="text-orange-brand group-hover:scale-110 transition-transform" />
+            </div>
+            <span className="text-[10px] font-semibold text-white/70 group-hover:text-white">Products</span>
+          </button>
+
+          {/* How It Works Icon */}
+          <button
+            onClick={() => scrollToSection('#how-it-works')}
+            className="flex flex-col items-center justify-center gap-1 py-2 px-3 rounded-xl transition-all duration-300 hover:bg-white/10 group"
+          >
+            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-brand/20 to-blue-brand/10 flex items-center justify-center group-hover:from-blue-brand/40 group-hover:to-blue-brand/20 transition-all">
+              <CheckCircle2 size={22} className="text-blue-brand group-hover:scale-110 transition-transform" />
+            </div>
+            <span className="text-[10px] font-semibold text-white/70 group-hover:text-white">How It Works</span>
+          </button>
+
+          {/* Eligibility Icon */}
+          <button
+            onClick={() => scrollToSection('#eligibility')}
+            className="flex flex-col items-center justify-center gap-1 py-2 px-3 rounded-xl transition-all duration-300 hover:bg-white/10 group"
+          >
+            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-gold/20 to-gold/10 flex items-center justify-center group-hover:from-gold/40 group-hover:to-gold/20 transition-all">
+              <BadgeCheck size={22} className="text-gold group-hover:scale-110 transition-transform" />
+            </div>
+            <span className="text-[10px] font-semibold text-white/70 group-hover:text-white">Eligibility</span>
+          </button>
+
+          {/* Contact Icon */}
+          <button
+            onClick={() => scrollToSection('#contact')}
+            className="flex flex-col items-center justify-center gap-1 py-2 px-3 rounded-xl transition-all duration-300 hover:bg-white/10 group"
+          >
+            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-orange-brand/20 to-orange-brand/10 flex items-center justify-center group-hover:from-orange-brand/40 group-hover:to-orange-brand/20 transition-all">
+              <Phone size={22} className="text-orange-brand group-hover:scale-110 transition-transform" />
+            </div>
+            <span className="text-[10px] font-semibold text-white/70 group-hover:text-white">Contact</span>
           </button>
         </div>
       </div>
@@ -1651,7 +1669,7 @@ function App() {
       <Navigation />
       
       {/* Main Content */}
-      <main className="relative">
+      <main className="relative pb-24 lg:pb-0">
         <HeroSection />
         <FeaturesSection />
         <HowItWorksSection />

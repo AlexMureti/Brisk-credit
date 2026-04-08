@@ -1,0 +1,286 @@
+/* Brisk Credit Ltd - ENHANCED Interactive Styles */
+
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Ensure full-width sections */
+section {
+  width: 100%;
+}
+
+/* ===== HERO SECTION ENHANCEMENTS ===== */
+
+/* Video background optimization */
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Floating elements smooth animation */
+.floating-element {
+  transition: all 0.3s ease;
+}
+
+.floating-element:hover {
+  transform: translateY(-8px);
+}
+
+/* Animation delay utilities */
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+
+.animation-delay-600 {
+  animation-delay: 600ms;
+}
+
+/* Scroll indicator pulse */
+.scroll-indicator {
+  animation: pulse-scroll 2s ease-in-out infinite;
+}
+
+@keyframes pulse-scroll {
+  0%, 100% {
+    opacity: 0.5;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(8px);
+  }
+}
+
+/* ===== CARD HOVER EFFECTS ===== */
+
+/* Feature cards with advanced hover */
+.feature-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transition: left 0.5s ease;
+  pointer-events: none;
+}
+
+.feature-card:hover::before {
+  left: 100%;
+}
+
+/* Image zoom on hover maintains aspect ratio */
+.group:hover .image-filter {
+  filter: grayscale(0.1) contrast(1.12) brightness(1.05);
+}
+
+/* ===== BUTTON ENHANCEMENTS ===== */
+
+/* Button press effect */
+.btn-primary:active,
+.btn-secondary:active {
+  transform: scale(0.97);
+}
+
+/* CTA button glow */
+.btn-primary {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.5), rgba(255, 166, 35, 0.3));
+  border-radius: 0.75rem;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.btn-primary:hover::before {
+  opacity: 1;
+}
+
+/* Interactive button ripple effect */
+@keyframes button-ripple {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 20px rgba(255, 107, 53, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 53, 0);
+  }
+}
+
+.btn-primary:active {
+  animation: button-ripple 0.6s ease-out;
+}
+
+/* Card hover lift */
+.card-premium {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* FAQ accordion smooth transition */
+.faq-item {
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.faq-item:hover {
+  transform: translateY(-2px);
+}
+
+/* Partner logo hover */
+.partner-logo {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Step card connector animation */
+.step-card {
+  position: relative;
+}
+
+/* Feature card image zoom */
+.feature-card img {
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Product card image zoom */
+.product-card img {
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Stats number animation */
+.stat-item {
+  transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+  transform: translateX(8px);
+}
+
+/* Branch item hover */
+.branch-item {
+  transition: all 0.3s ease;
+}
+
+.branch-item:hover {
+  border-color: rgba(255, 107, 53, 0.5);
+  transform: translateX(4px);
+}
+
+/* Eligibility item hover */
+.eligibility-item {
+  transition: all 0.3s ease;
+}
+
+.eligibility-item:hover {
+  border-color: rgba(0, 153, 255, 0.5);
+  background: rgba(0, 153, 255, 0.05);
+}
+
+/* Mobile menu animation */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+/* Navigation background transition */
+nav {
+  transition: background-color 0.5s ease, backdrop-filter 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* Gold dot pulse animation */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(245, 166, 35, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(245, 166, 35, 0.6);
+  }
+}
+
+/* Responsive typography adjustments */
+@media (max-width: 640px) {
+  .headline-display {
+    font-size: 2rem !important;
+    line-height: 1.1;
+  }
+}
+
+/* Ensure images don't overflow */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Focus states for accessibility */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #f5a623;
+  outline-offset: 2px;
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Loading state for images */
+img {
+  background: linear-gradient(135deg, #0A2540 0%, #061B2E 100%);
+}
+
+/* Custom selection color */
+::selection {
+  background: rgba(245, 166, 35, 0.3);
+  color: #F5F7FA;
+}
+
+/* Print styles */
+@media print {
+  .grain-overlay,
+  nav,
+  .btn-primary,
+  .btn-secondary {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}
